@@ -1,4 +1,5 @@
 import 'package:chatgpt_flutter/constants/constants.dart';
+import 'package:chatgpt_flutter/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           scaffoldBackgroundColor: scaffoldBackgroundColor,
           appBarTheme: AppBarTheme(color: cardColor)),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const ChatScreen(),
     );
   }
 }
