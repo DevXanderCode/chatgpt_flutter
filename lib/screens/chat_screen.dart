@@ -1,10 +1,9 @@
 import 'package:chatgpt_flutter/services/assets_manager.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:chatgpt_flutter/constants/constants.dart';
+import 'package:chatgpt_flutter/widgets/chat_widget.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -53,7 +52,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: ListView.builder(
                 itemCount: 6,
                 itemBuilder: ((context, index) {
-                  return const Text('Hello this a text.');
+                  return const ChatWidget();
                 }),
               ),
             ),

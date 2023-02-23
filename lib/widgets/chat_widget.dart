@@ -14,7 +14,11 @@ class ChatWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              Image.asset(AssetsManager.userImage),
+              Image.asset(
+                AssetsManager.userImage,
+                height: 30,
+                width: 30,
+              ),
             ],
           ),
         ),
