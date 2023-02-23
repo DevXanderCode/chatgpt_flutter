@@ -52,7 +52,9 @@ class _ChatScreenState extends State<ChatScreen> {
               child: ListView.builder(
                 itemCount: 6,
                 itemBuilder: ((context, index) {
-                  return const ChatWidget();
+                  return ChatWidget(
+                      msg: chatMessages[index]['msg'].toString(),
+                      chatIndex: int.parse(chatMessages[index]['chatIndex'].toString(),),);
                 }),
               ),
             ),
