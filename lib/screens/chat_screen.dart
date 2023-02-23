@@ -34,13 +34,18 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 2,
-        leading: Padding(
-          padding: const EdgeInsets.all(6.0),
-          child: Image.asset(AssetsManager.openaiLogo),
-        ),
-        title: const Text('ChatGPT'),
-      ),
+          elevation: 2,
+          leading: Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: Image.asset(AssetsManager.openaiLogo),
+          ),
+          title: const Text('ChatGPT'),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.more_vert_rounded, color: Colors.white),
+            )
+          ]),
       body: SafeArea(
         child: Column(
           children: [
