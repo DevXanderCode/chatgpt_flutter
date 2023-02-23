@@ -1,8 +1,10 @@
 import 'package:chatgpt_flutter/services/assets_manager.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:chatgpt_flutter/constants/constants.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -51,7 +53,35 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
             if (_isTyping) ...[
-              const SpinKitThreeBounce(color: Colors.white, size: 18)
+              const SpinKitThreeBounce(color: Colors.white, size: 18),
+              const SizedBox(height: 15),
+              Material(
+                color: cardColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          style: const TextStyle(color: Colors.white),
+                          controller: textEditingController,
+                          onSubmitted: (value) {
+                            // TODO: send message
+                          },
+                          decoration: const InputDecoration.collapsed(
+                            hintText: 'How can I help you',
+                            hintStyle: TextStyle(color: Colors.grey),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.send, color: Colors.white),
+                      )
+                    ],
+                  ),
+                ),
+              )
             ]
           ],
         ),
