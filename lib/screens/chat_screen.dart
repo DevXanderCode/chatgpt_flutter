@@ -1,9 +1,9 @@
-import 'package:chatgpt_flutter/services/assets_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:chatgpt_flutter/services/assets_manager.dart';
 
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:chatgpt_flutter/constants/constants.dart';
-import 'package:chatgpt_flutter/widgets/chat_widget.dart';
+import 'package:chatgpt_flutter/widgets/widgets.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -41,7 +41,31 @@ class _ChatScreenState extends State<ChatScreen> {
           title: const Text('ChatGPT'),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () async {
+                await showModalBottomSheet(
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                  ),
+                    backgroundColor: scaffoldBackgroundColor,
+                    context: context,
+                    builder: (context) {
+                      return Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: Row(
+                          children: const [
+                            Flexible(
+                              child: TextWidget(
+                                label: 'Chosen Model',
+                                fontSize: 16,
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    });
+              },
               icon: const Icon(Icons.more_vert_rounded, color: Colors.white),
             )
           ]),
@@ -53,8 +77,11 @@ class _ChatScreenState extends State<ChatScreen> {
                 itemCount: 6,
                 itemBuilder: ((context, index) {
                   return ChatWidget(
-                      msg: chatMessages[index]['msg'].toString(),
-                      chatIndex: int.parse(chatMessages[index]['chatIndex'].toString(),),);
+                    msg: chatMessages[index]['msg'].toString(),
+                    chatIndex: int.parse(
+                      chatMessages[index]['chatIndex'].toString(),
+                    ),
+                  );
                 }),
               ),
             ),
