@@ -1,3 +1,4 @@
+import 'package:chatgpt_flutter/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class ModalDropDownWidget extends StatefulWidget {
@@ -12,7 +13,9 @@ class _ModalDropDownWidgetState extends State<ModalDropDownWidget> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-        items: [],
+        dropdownColor: scaffoldBackgroundColor,
+        iconEnabledColor: Colors.white,
+        items: getModelsItem,
         value: currentModel,
         onChanged: (value) {
           setState(() {
