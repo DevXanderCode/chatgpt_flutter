@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class TextWidget extends StatelessWidget {
   const TextWidget(
@@ -21,11 +19,10 @@ class TextWidget extends StatelessWidget {
     return Text(
       label,
       style: TextStyle(
-          fontSize: fontSize,
-          color: color ?? Colors.white,
-          fontWeight: fontWeight ?? FontWeight.w500,
-          
-          ),
+        fontSize: fontSize,
+        color: color ?? Colors.white,
+        fontWeight: fontWeight ?? FontWeight.w500,
+      ),
     );
   }
 }

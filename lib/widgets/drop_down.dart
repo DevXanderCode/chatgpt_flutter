@@ -25,16 +25,25 @@ class _ModalDropDownWidgetState extends State<ModalDropDownWidget> {
           }
           return snapshot.data == null || snapshot.data!.isEmpty
               ? const SizedBox.shrink()
-              : DropdownButton(
-                  dropdownColor: scaffoldBackgroundColor,
-                  iconEnabledColor: Colors.white,
-                  items: getModelsItem,
-                  value: currentModel,
-                  onChanged: (value) {
-                    setState(() {
-                      currentModel = value.toString();
-                    });
-                  });
+              : FittedBox(
+                  child: DropdownButton(
+                      dropdownColor: scaffoldBackgroundColor,
+                      iconEnabledColor: Colors.white,
+                      items: List<DropdownMenuItem<Object?>>.generate(
+                        snapshot.data!.length,
+                        (index) => DropdownMenuItem(
+                          value: snapshot.data![index],
+                          child: TextWidget(
+                              label: snapshot.data![index].id, fontSize: 15),
+                        ),
+                      ),
+                      value: currentModel,
+                      onChanged: (value) {
+                        setState(() {
+                          currentModel = value.toString();
+                        });
+                      }),
+                );
         });
   }
 }

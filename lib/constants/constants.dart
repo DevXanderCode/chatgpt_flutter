@@ -5,26 +5,27 @@ import '../widgets/widgets.dart';
 Color scaffoldBackgroundColor = const Color(0xFF343541);
 Color cardColor = const Color(0xFF444654);
 
-List<String> models = [
-  'Model1',
-  'Model2',
-  'Model3',
-  'Model4',
-  'Model5',
-  'Model6',
-];
+// List<String> models = [
+//   'Model1',
+//   'Model2',
+//   'Model3',
+//   'Model4',
+//   'Model5',
+//   'Model6',
+// ];
 
-List<DropdownMenuItem<Object?>>? get getModelsItem {
-  /// Creating a list of dropdown menu items.
-  List<DropdownMenuItem<Object?>>? modelsItems =
-      List<DropdownMenuItem<Object?>>.generate(
-          models.length,
-          (index) => DropdownMenuItem(
-                value: models[index],
-                child: TextWidget(label: models[index], fontSize: 15),
-              ));
-  return modelsItems;
-}
+// List<DropdownMenuItem<Object?>>? get getModelsItem {
+//   /// Creating a list of dropdown menu items.
+//   List<DropdownMenuItem<Object?>>? modelsItems =
+//       List<DropdownMenuItem<Object?>>.generate(
+//     models.length,
+//     (index) => DropdownMenuItem(
+//       value: models[index],
+//       child: TextWidget(label: models[index], fontSize: 15),
+//     ),
+//   );
+//   return modelsItems;
+// }
 
 final chatMessages = [
   {
