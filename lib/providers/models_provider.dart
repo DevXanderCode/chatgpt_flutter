@@ -12,4 +12,9 @@ class ModelsProvider with ChangeNotifier {
   String get getCurrentModel {
     return currentModel;
   }
+
+  void setCurrentModel(String newModel) {
+    currentModel = newModel;
+    notifyListeners();
+  }
 }
