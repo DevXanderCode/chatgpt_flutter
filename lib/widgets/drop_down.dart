@@ -11,7 +11,7 @@ class ModalDropDownWidget extends StatefulWidget {
 }
 
 class _ModalDropDownWidgetState extends State<ModalDropDownWidget> {
-  String currentModel = 'Model1';
+  String currentModel = 'text-davinci-003';
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -19,9 +19,10 @@ class _ModalDropDownWidgetState extends State<ModalDropDownWidget> {
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(
-                child: TextWidget(
-              label: snapshot.error.toString(),
-            ));
+              child: TextWidget(
+                label: snapshot.error.toString(),
+              ),
+            );
           }
           return snapshot.data == null || snapshot.data!.isEmpty
               ? const SizedBox.shrink()
@@ -32,9 +33,11 @@ class _ModalDropDownWidgetState extends State<ModalDropDownWidget> {
                       items: List<DropdownMenuItem<Object?>>.generate(
                         snapshot.data!.length,
                         (index) => DropdownMenuItem(
-                          value: snapshot.data![index],
+                          value: snapshot.data![index].id,
                           child: TextWidget(
-                              label: snapshot.data![index].id, fontSize: 15),
+                            label: snapshot.data![index].id,
+                            fontSize: 15,
+                          ),
                         ),
                       ),
                       value: currentModel,
