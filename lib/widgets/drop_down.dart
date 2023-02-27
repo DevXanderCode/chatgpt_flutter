@@ -13,10 +13,11 @@ class ModalDropDownWidget extends StatefulWidget {
 }
 
 class _ModalDropDownWidgetState extends State<ModalDropDownWidget> {
-  String currentModel = 'text-davinci-003';
+  String? currentModel;
   @override
   Widget build(BuildContext context) {
     final modelsProvider = Provider.of<ModelsProvider>(context, listen: false);
+    currentModel = modelsProvider.currentModel;
     return FutureBuilder(
         // future: ApiService.getModels(),
         future: modelsProvider.getAllModels(),
@@ -48,6 +49,9 @@ class _ModalDropDownWidgetState extends State<ModalDropDownWidget> {
                       onChanged: (value) {
                         setState(() {
                           currentModel = value.toString();
+                          modelsProvider.setCurrentModel(
+                            value.toString(),
+                          );
                         });
                       }),
                 );
