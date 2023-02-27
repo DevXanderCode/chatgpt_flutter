@@ -8,7 +8,6 @@ import 'package:chatgpt_flutter/constants/api_consts.dart';
 
 class ApiService {
   static Future<List<ModelsModel>> getModels() async {
-    log('function called');
     try {
       var response = await http.get(Uri.parse('$BASE_URL/models'),
           headers: {"Authorization": "Bearer $API_KEY"});
@@ -32,6 +31,20 @@ class ApiService {
       return ModelsModel.modelsFromSnapshot(temp);
     } catch (error) {
       log('get models error ==> $error');
+      rethrow;
+    }
+  }
+
+  static Future<dynamic> sendMessage(
+      {required String message, required String model}) async {
+    try {
+      var response = await http.post(Uri.parse('$BASE_URL/completions'), body: {
+        'models': model,
+        'prompt': message,
+        "max_tokens": 100,
+      });
+    } catch (e) {
+      log('send message error ==> $e');
       rethrow;
     }
   }
