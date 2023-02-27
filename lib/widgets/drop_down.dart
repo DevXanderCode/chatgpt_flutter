@@ -1,7 +1,9 @@
 import 'package:chatgpt_flutter/constants/constants.dart';
+import 'package:chatgpt_flutter/providers/models_provider.dart';
 import 'package:chatgpt_flutter/services/api_service.dart';
 import 'package:chatgpt_flutter/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ModalDropDownWidget extends StatefulWidget {
   const ModalDropDownWidget({super.key});
@@ -14,8 +16,10 @@ class _ModalDropDownWidgetState extends State<ModalDropDownWidget> {
   String currentModel = 'text-davinci-003';
   @override
   Widget build(BuildContext context) {
+    final modelsProvider = Provider.of<ModelsProvider>(context, listen: false);
     return FutureBuilder(
-        future: ApiService.getModels(),
+        // future: ApiService.getModels(),
+        future: modelsProvider.getAllModels(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(
