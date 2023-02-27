@@ -21,16 +21,18 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _isTyping = false;
 
   late TextEditingController textEditingController;
-
+  late FocusNode focusNode;
   @override
   void initState() {
     textEditingController = TextEditingController();
+    focusNode = FocusNode();
     super.initState();
   }
 
   @override
   void dispose() {
     textEditingController.dispose();
+    focusNode.dispose();
     super.dispose();
   }
 
@@ -84,6 +86,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   children: [
                     Expanded(
                       child: TextField(
+                        focusNode: focusNode,
                         style: const TextStyle(color: Colors.white),
                         controller: textEditingController,
                         onSubmitted: (value) async {
@@ -121,6 +124,8 @@ class _ChatScreenState extends State<ChatScreen> {
             chatIndex: 0,
           ),
         );
+        textEditingController.clear();
+        focusNode.unfocus();
       });
       // await ApiService.getModels();
       chatList.addAll(
