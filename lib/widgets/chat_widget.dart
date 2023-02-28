@@ -37,11 +37,16 @@ class ChatWidget extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                           fontSize: 16,
                         ),
-                        child: AnimatedTextKit(animatedTexts: [
-                          TyperAnimatedText(
-                            msg.trim(),
-                          )
-                        ]),
+                        child: AnimatedTextKit(
+                            isRepeatingAnimation: false,
+                            repeatForever: false,
+                            displayFullTextOnTap: true,
+                            totalRepeatCount: 1,
+                            animatedTexts: [
+                              TyperAnimatedText(
+                                msg.trim(),
+                              )
+                            ]),
                       ),
               ),
               chatIndex == 0
